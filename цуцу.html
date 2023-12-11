@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Информация об общежитии</title>
+</head>
+<body>
+  <h1>Информация об общежитии</h1>
+  <h2>Базовая информация</h2>
+  <p>Количество комнат: 50</p>
+  <p>Удобства: общая кухня, общая ванная, беспроводной интернет, стиральная машина, бесплатная парковка</p>
+  <p>Расположение: центр города, рядом с общественным транспортом, магазинами и ресторанами</p>
+
+  <h2>Форма для редактирования информации</h2>
+  <form id="hostelForm">
+    <label for="hostelName">Название общежития:</label>
+    <input type="text" id="hostelName" name="hostelName" value="Название общежития"><br>
+    <label for="roomCount">Количество комнат:</label>
+    <input type="number" id="roomCount" name="roomCount" value="50"><br>
+    <label for="kitchen">Общая кухня:</label>
+    <input type="checkbox" id="kitchen" name="kitchen" checked><br>
+    <label for="bathroom">Общая ванная:</label>
+    <input type="checkbox" id="bathroom" name="bathroom" checked><br>
+    <label for="wifi">Беспроводной интернет:</label>
+    <input type="checkbox" id="wifi" name="wifi" checked><br>
+    <label for="washingMachine">Стритальная машина:</label>
+    <input type="checkbox" id="washingMachine" name="washingMachine" checked><br>
+    <label for="parking">Бесплатная парковка:</label>
+    <input type="checkbox" id="parking" name="parking" checked><br>
+    <label for="location">Расположение:</label>
+    <input type="text" id="location" name="location" value="Центр города, рядом с общественным транспортом, магазинами и ресторанами"><br>
+    <label for="comments">Комментарии:</label>
+    <textarea id="comments" name="comments">Дополнительные комментарии</textarea><br>
+    <button type="submit">Сохранить</button>
+  </form>
+</body>
+</html>
+<a href="1.html">Регистрация абитуриентов</a>

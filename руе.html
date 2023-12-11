@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Информация об общежитии</title>
+  <style>
+    .edit-form {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Информация об общежитии</h1>
+  <div id="basic-info">
+    <h2>Базовая информация</h2>
+    <p>Количество комнат: <span id="room-count">50</span></p>
+    <p>Удобства: общая кухня, общая ванная, беспроводной интернет, стиральная машина, бесплатная парковка</p>
+    <p>Расположение: центральный район Пушкина 56</p>
+    <button onclick="showEditForm()">Редактировать</button>
+  </div>
+
+  <div id="edit-form" class="edit-form">
+    <h2>Редактирование информации</h2>
+    <form id="info-form">
+      <label for="room-count-input">Количество комнат:</label>
+      <input type="number" id="room-count-input"><br>
+      <label for="amenities-input">Удобства:</label>
+      <input type="text" id="amenities-input"><br>
+      <label for="location-input">Расположение:</label>
+      <input type="text" id="location-input"><br>
+      <button type="submit">Сохранить</button>
+      <button type="button" onclick="hideEditForm()">Отмена</button>
+    </form>
+  </div>
+
+  <script>
+    // Функция для отображения формы редактирования
+    function showEditForm() {
+      document.getElementById("basic-info").style.display = "none";
+      document.getElementById("edit-form").style.display = "block";
+      // Тут можно подставить текущие значения в поля формы редактирования, если нужно
+    }
+
+    // Функция для скрытия формы редактирования
+    function hideEditForm() {
+      document.getElementById("edit-form").style.display = "none";
+      document.getElementById("basic-info").style.display = "block";
+    }
+
+    // Добавьте обработчик события для отправки формы и обновления базовой информации
+    document.getElementById("info-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      let newRoomCount = document.getElementById("room-count-input").value;
+      let newAmenities = document.getElementById("amenities-input").value;
+      let newLocation = document.getElementById("location-input").value;
+
+      // Здесь можно добавить логику для сохранения новых значений на сервере или где-то еще
+
+      // После сохранения новых значений, обновите отображение базовой информации
+      document.getElementById("room-count").textContent = newRoomCount;
+      // Обновите другие элементы с удобствами и расположением аналогичным образом
+
+      hideEditForm(); // Скрыть форму редактирования после сохранения
+    });
+  </script>
+</body>
+</html>
