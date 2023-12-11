@@ -1,0 +1,118 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Форма для абитуриентов</title> 
+    <style> 
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 20px; 
+        } 
+ 
+        table, th, td { 
+            border: 1px solid #ccc; 
+        } 
+ 
+        th, td { 
+            padding: 10px; 
+            text-align: left; 
+        } 
+    </style> 
+</head> 
+<body> 
+ 
+<h2>Форма для абитуриентов</h2> 
+ 
+<form id="applicantForm"> 
+    <label for="fullName">ФИО:</label> 
+    <input type="text" id="fullName" required> 
+ 
+    <label for="contactInfo">Контактная информация:</label> 
+    <input type="text" id="contactInfo" required> 
+ 
+    <label for="entranceExams">Данные по вступительным испытаниям:</label> 
+    <input type="text" id="entranceExams" required> 
+ 
+    <label for="points">Баллы:</label> 
+    <input type="number" id="points" required> 
+ 
+    <button type="button" onclick="addApplicant()">Добавить абитуриента</button> 
+    <button type="button" onclick="sortApplicants()">Сортировать по баллам</button> 
+</form> 
+ 
+<table id="applicantTable"> 
+    <tr> 
+        <th>ФИО</th> 
+        <th>Контактная информация</th> 
+        <th>Данные по вступительным испытаниям</th> 
+        <th>Баллы</th> 
+        <th>Действия</th> 
+    </tr> 
+</table> 
+ 
+<script> 
+    function addApplicant() { 
+        var fullName = document.getElementById("fullName").value; 
+        var contactInfo = document.getElementById("contactInfo").value; 
+        var entranceExams = document.getElementById("entranceExams").value; 
+        var points = parseInt(document.getElementById("points").value); 
+ 
+        var table = document.getElementById("applicantTable"); 
+        var row = table.insertRow(-1); 
+ 
+        var cell1 = row.insertCell(0); 
+        cell1.innerHTML = fullName; 
+ 
+        var cell2 = row.insertCell(1); 
+        cell2.innerHTML = contactInfo; 
+ 
+        var cell3 = row.insertCell(2); 
+        cell3.innerHTML = entranceExams; 
+ 
+        var cell4 = row.insertCell(3); 
+        cell4.innerHTML = points; 
+ 
+        var cell5 = row.insertCell(4); 
+        cell5.innerHTML = '<button onclick="editApplicant(this)">Редактировать</button> <button onclick="deleteApplicant(this)">Удалить</button>'; 
+ 
+        document.getElementById("applicantForm").reset(); 
+    } 
+ 
+    function editApplicant(button) { 
+        var row = button.parentNode.parentNode; 
+ 
+        document.getElementById("fullName").value = row.cells[0].innerHTML; 
+        document.getElementById("contactInfo").value = row.cells[1].innerHTML; 
+        document.getElementById("entranceExams").value = row.cells[2].innerHTML; 
+        document.getElementById("points").value = row.cells[3].innerHTML; 
+ 
+        row.parentNode.removeChild(row); 
+    } 
+ 
+    function deleteApplicant(button) { 
+        var row = button.parentNode.parentNode; 
+        row.parentNode.removeChild(row); 
+    } 
+ 
+    function sortApplicants() { 
+        var table = document.getElementById("applicantTable"); 
+        var rows = Array.from(table.rows).slice(1); 
+ 
+        rows.sort((a, b) => { 
+            var scoreA = parseInt(a.cells[3].innerHTML); 
+            var scoreB = parseInt(b.cells[3].innerHTML); 
+            return scoreB - scoreA; 
+        }); 
+ 
+        table.innerHTML = "<tr><th>ФИО</th><th>Контактная информация</th><th>Данные по вступительным испытаниям</th><th>Баллы</th><th>Действия</th></tr>"; 
+        rows.forEach(row => { 
+            table.appendChild(row); 
+        }); 
+    } 
+</script> 
+ 
+</body> 
+</html>
+<a href="руе.html">Информация об общежитии</a>
